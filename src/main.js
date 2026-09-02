@@ -1,3 +1,4 @@
+window.__NEON_OUTLAW_SCRIPT_STARTED=true;
 import * as THREE from 'three';
 import {World,createSky} from './world.js';
 import {SaveSystem,Player,Vehicle,EnemyManager,MissionSystem,WantedSystem,Effects} from './systems.js';
