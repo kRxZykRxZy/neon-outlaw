@@ -7,7 +7,24 @@
   <meta name="description" content="Neon Outlaw - a browser 3D open-world crime action game.">
   <title>NEON OUTLAW</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="https://sdk.crazygames.com/crazygames-sdk-v3.js"></script>
+  <script>
+    window.__NEON_OUTLAW_SCRIPT_STARTED = false;
+    window.addEventListener('error', function(e) {
+      var el = document.getElementById('load-text');
+      if (el && !window.__NEON_OUTLAW_SCRIPT_STARTED) el.textContent = 'ENGINE LOAD ERROR — ' + (e.message || 'CHECK CONSOLE');
+    });
+    window.addEventListener('unhandledrejection', function(e) {
+      var el = document.getElementById('load-text');
+      if (el && !window.__NEON_OUTLAW_SCRIPT_STARTED) el.textContent = 'ENGINE ERROR — ' + ((e.reason && e.reason.message) || 'CHECK CONSOLE');
+    });
+    window.setTimeout(function() {
+      var el = document.getElementById('load-text');
+      if (el && !window.__NEON_OUTLAW_SCRIPT_STARTED && el.textContent === 'INITIALIZING CITY...') {
+        el.textContent = 'ENGINE SCRIPT NOT LOADED';
+      }
+    }, 2500);
+  </script>
+  <script defer src="https://sdk.crazygames.com/crazygames-sdk-v3.js"></script>
 </head>
 <body>
   <div id="loading"><div class="logo">NEON OUTLAW</div><div class="loadbar"><i id="load-progress"></i></div><small id="load-text">INITIALIZING CITY...</small></div>
@@ -28,6 +45,6 @@
   <div id="death-screen" class="overlay hidden"><div class="panel"><h2>YOU'RE DONE.</h2><p id="death-text">The city wins this round.</p><button id="retry">RETRY</button><button id="death-menu">CITY MENU</button></div></div>
   <div id="toast"></div>
   <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}</script>
-  <script type="module" src="src/main.js"></script>
+  <script type="module" src="src/main.js?v=84d6ba3"></script>
 </body>
 </html>
