@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-  <meta name="theme-color" content="#050510">
+  <meta name="theme-color" content="#9ed6ff">
   <meta name="description" content="Neon Outlaw - a browser 3D open-world crime action game.">
   <title>NEON OUTLAW</title>
   <link rel="stylesheet" href="styles.css">
@@ -15,7 +15,7 @@
   <div id="game"></div>
   <div id="hud" class="hidden">
     <div class="topbar"><div class="brand">NO<span>//</span></div><div class="wanted" id="wanted">WANTED <b>☆ ☆ ☆ ☆ ☆</b></div><div class="cash" id="cash">$2,500</div></div>
-    <div class="mission" id="mission"><small>OBJECTIVE</small><strong id="objective">Explore the city</strong><div class="mission-progress"><i id="mission-progress"></i></div></div>
+    <div class="mission" id="mission"><small>OBJECTIVE</small><strong id="objective">Explore the village</strong><div class="mission-progress"><i id="mission-progress"></i></div></div>
     <div class="stats"><div><label>HP</label><div class="bar"><i id="hp"></i></div></div><div><label>ARMOR</label><div class="bar armor"><i id="armor"></i></div></div></div>
     <div class="crosshair" id="crosshair"></div><div class="weapon"><span id="weapon-name">SIDEARM</span><b id="ammo">12 / 60</b></div><div class="speed" id="speed">0 KM/H</div>
     <div class="minimap"><canvas id="map" width="180" height="180"></canvas><span class="player-dot"></span></div><div class="prompt" id="prompt"></div>
@@ -28,8 +28,10 @@
   <div id="death-screen" class="overlay hidden"><div class="panel"><h2>YOU'RE DONE.</h2><p id="death-text">The city wins this round.</p><button id="retry">RETRY</button><button id="death-menu">CITY MENU</button></div></div>
   <div id="toast"></div>
   <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}</script>
-  <script src="src/mobile.js?v=20260902-2"></script>
-  <script type="module" src="src/boot.js?v=20260902-3"></script>
-  <script type="module" src="src/navigation.js?v=20260902-1"></script>
+  <script src="src/mobile.js?v=20260902-3"></script>
+  <script type="module" src="src/boot.js?v=20260902-4"></script>
+  <script type="module" src="src/navigation.js?v=20260902-2"></script>
+  <script type="module" src="src/guide.js?v=20260902-1"></script>
+  <script type="module" src="src/ambience.js?v=20260902-1"></script>
 </body>
 </html>
