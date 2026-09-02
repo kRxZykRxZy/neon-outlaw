@@ -1,0 +1,9 @@
+import * as THREE from 'three';
+const MOBILE=!!window.__NEON_MOBILE__;
+let guide=null,game=null,routeIndex=0,last=performance.now();
+function mat(c){return new THREE.MeshStandardMaterial({color:c,roughness:.7})}
+function makeGuide(g){const root=new THREE.Group();root.position.set(0,0,38);const body=new THREE.Mesh(new THREE.CapsuleGeometry(.42,1.05,4,8),mat(0x2f70d0));body.position.y=1.05;root.add(body);const head=new THREE.Mesh(new THREE.SphereGeometry(.34,10,8),mat(0xe2ad87));head.position.y=1.95;root.add(head);const vest=new THREE.Mesh(new THREE.BoxGeometry(.9,.65,.5),mat(0xffc83d));vest.position.y=1.1;root.add(vest);const label=document.createElement('div');label.className='guide-label';label.textContent='JAX  •  FOLLOW ME';document.body.appendChild(label);g.scene.add(root);return {root,label}}
+function targetFor(){if(!game?.missions?.active)return new THREE.Vector3(0,0,220);const m=game.missions.active;return new THREE.Vector3(0,0,Math.min(220,Math.max(110,m.distance||160)))}
+function tick(){if(!game?.ready||!guide)return;const now=performance.now(),dt=Math.min(.06,(now-last)/1000);last=now;const target=targetFor();const p=guide.root.position;const to=target.clone().sub(p);to.y=0;if(to.length()>5){to.normalize();p.addScaledVector(to,(MOBILE?2.3:3)*dt);guide.root.rotation.y=Math.atan2(to.x,to.z)}else if(routeIndex<2){routeIndex++;}const player=game.player?.group?.position;if(player){const dist=player.distanceTo(p);guide.label.style.left='50%';guide.label.style.top='calc(50% - 90px)';guide.label.style.transform='translateX(-50%)';guide.label.style.display=dist<45?'block':'none'}requestAnimationFrame(tick)}
+function boot(){game=window.game;if(!game||!game.scene||!game.player){setTimeout(boot,300);return}guide=makeGuide(game);game.showToast('FOLLOW JAX — HE WILL LEAD YOU TO THE FIRST OBJECTIVE');tick()}
+boot();
