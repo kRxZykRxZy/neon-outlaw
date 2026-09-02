@@ -16,8 +16,8 @@ export class World{
  makeWater(){const g=new THREE.PlaneGeometry(500,400);g.rotateX(-Math.PI/2);const w=new THREE.Mesh(g,new THREE.MeshStandardMaterial({color:0x4c9bd1,roughness:.18,metalness:.25}));w.position.set(-720,-.1,-760);this.root.add(w)}
  makeHighway(){const pts=[[-1100,2,650],[-700,4,500],[-250,6,610],[250,8,520],[700,10,650],[1100,12,520]].map(v=>new THREE.Vector3(...v));const curve=new THREE.CatmullRomCurve3(pts);const samples=curve.getPoints(MOBILE?12:20);const roadMat=mat(0x73777a,.85,.05);for(let i=0;i<samples.length-1;i++){const a=samples[i],b=samples[i+1],mid=a.clone().add(b).multiplyScalar(.5),len=a.distanceTo(b),ang=Math.atan2(b.x-a.x,b.z-a.z);const slab=new THREE.Mesh(new THREE.BoxGeometry(28,.4,len),roadMat);slab.position.copy(mid);slab.rotation.y=ang;this.root.add(slab);this.roads.push({x:mid.x,z:mid.z,angle:ang})}}
  makeDistrictLandmarks(){for(const d of DISTRICTS){const [x,,z]=d.center,h=18+d.level*7;const tower=this.box(9,h,9,d.color,x,h/2,z,.5,.25);const ring=new THREE.Mesh(new THREE.TorusGeometry(16+d.level*2,.55,MOBILE?6:8,MOBILE?12:20),new THREE.MeshBasicMaterial({color:d.color}));ring.position.set(x,h*.72,z);ring.rotation.x=Math.PI/2;this.root.add(ring);tower.userData.landmark=d.id}}
- getSpawn(){return new THREE.Vector3(0,1.2,0)}
- isBlocked(pos,r=1){const p=new THREE.Vector3(pos.x,Math.max(1,pos.y),pos.z);for(const b of this.colliders){const q=b.clone().expandByScalar(r);if(q.containsPoint(p))return true}return false}
+ getSpawn(){return new THREE.Vector3(0,1.2,-60)}
+ isBlocked(pos,r=1){if(Math.abs(pos.x)<22&&Math.abs(pos.z+60)<22)return false;const p=new THREE.Vector3(pos.x,Math.max(1,pos.y),pos.z);for(const b of this.colliders){const q=b.clone().expandByScalar(r);if(q.containsPoint(p))return true}return false}
  districtAt(pos){return this.closestDistrict(pos.x,pos.z)}
  update(){if(this.buildQueue.length)this.makeBuildings(MOBILE?2:4);else this.streaming=false}
 }
