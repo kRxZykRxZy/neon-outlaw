@@ -33,7 +33,7 @@ export const MISSIONS=[
 {id:'m16',chapter:3,title:'VERTIGO',district:'corporate',type:'drive',brief:'Reach Zenith Tower before sunrise.',reward:18000,xp:1700,unlock:15,target:'Tower',distance:1800},
 {id:'m17',chapter:3,title:'THE BOARD',district:'corporate',type:'combat',brief:'Break the private security ring.',reward:21000,xp:1900,unlock:16,target:'Guards',kills:35},
 {id:'m18',chapter:3,title:'FIREWALL',district:'corporate',type:'delivery',brief:'Get the stolen access key to the tower hacker.',reward:23000,xp:2100,unlock:17,target:'Hacker'},
-{id:'m19',chapter:3,title:'BLACKOUT',district:'corporate',type:'combat',brief:'Take down the city's power relays.',reward:27000,xp:2400,unlock:18,target:'Relays',kills:30},
+{id:'m19',chapter:3,title:'BLACKOUT',district:'corporate',type:'combat',brief:'Take down the city\'s power relays.',reward:27000,xp:2400,unlock:18,target:'Relays',kills:30},
 {id:'m20',chapter:3,title:'NO GODS',district:'corporate',type:'boss',brief:'Confront Director Vale at Zenith Tower.',reward:45000,xp:4000,unlock:19,target:'Vale',kills:1},
 {id:'m21',chapter:4,title:'AFTERSHOCK',district:'outskirts',type:'escape',brief:'Survive the citywide manhunt.',reward:30000,xp:2600,unlock:20,target:'Wanted',stars:5,distance:2500},
 {id:'m22',chapter:4,title:'GHOST ROAD',district:'outskirts',type:'race',brief:'Cross the freight highway in record time.',reward:33000,xp:2900,unlock:21,target:'Race',distance:3000},
