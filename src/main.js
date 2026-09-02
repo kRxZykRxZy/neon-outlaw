@@ -1,9 +1,9 @@
 window.__NEON_OUTLAW_SCRIPT_STARTED=true;
 import * as THREE from 'three';
-import {World,createSky} from './world.js';
-import {SaveSystem,Player,Vehicle,EnemyManager,MissionSystem,WantedSystem,Effects} from './systems.js';
-import {TrafficSystem,PedestrianSystem,PickupSystem,WeatherSystem} from './traffic.js';
-import {WEAPONS,VEHICLES,MISSIONS} from './content.js';
+import {World,createSky} from './world.js?v=20260902-2';
+import {SaveSystem,Player,Vehicle,EnemyManager,MissionSystem,WantedSystem,Effects} from './systems.js?v=20260902-2';
+import {TrafficSystem,PedestrianSystem,PickupSystem,WeatherSystem} from './traffic.js?v=20260902-2';
+import {WEAPONS,VEHICLES,MISSIONS} from './content.js?v=20260902-2';
 const $=id=>document.getElementById(id);
 class Events{constructor(){this.m={}}on(k,f){(this.m[k]??=[]).push(f)}emit(k,...a){for(const f of this.m[k]||[])try{f(...a)}catch(e){console.error(e)}}}
 class Input{constructor(){this.keys={};this.lookX=0;this.lookY=0;this.pointer=false;addEventListener('keydown',e=>{this.keys[e.code]=true;if(['Space','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code))e.preventDefault()});addEventListener('keyup',e=>this.keys[e.code]=false);addEventListener('mousemove',e=>{if(this.pointer){this.lookX=e.movementX;this.lookY=e.movementY}});addEventListener('mousedown',e=>{if(e.button===0)this.keys.Mouse0=true;if(e.button===2)this.pointer=true});addEventListener('mouseup',e=>{if(e.button===0)this.keys.Mouse0=false});addEventListener('contextmenu',e=>e.preventDefault());document.addEventListener('pointerlockchange',()=>this.pointer=document.pointerLockElement===document.body);document.body.addEventListener('click',()=>{if(!this.pointer)document.body.requestPointerLock?.()})}frame(){const k=this.keys,o={forward:(k.KeyW?1:0)-(k.KeyS?1:0),strafe:(k.KeyD?1:0)-(k.KeyA?1:0),sprint:!!(k.ShiftLeft||k.ShiftRight),fire:!!(k.Mouse0||k.Space),reload:!!k.KeyR,brake:!!k.Space,exit:!!k.KeyF,lookX:this.lookX,lookY:this.lookY};this.lookX=0;this.lookY=0;return o}}
