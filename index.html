@@ -25,12 +25,22 @@
     <div class="crosshair" id="crosshair"></div><div class="weapon"><span id="weapon-name">SIDEARM</span><b id="ammo">12 / 60</b></div><div class="speed" id="speed">0 KM/H</div>
     <div class="minimap"><canvas id="map" width="180" height="180"></canvas><span class="player-dot"></span></div><div class="prompt" id="prompt"></div>
   </div>
+  <div id="touch-look"></div>
+  <div id="touch-controls" class="touch-controls" aria-hidden="true">
+    <div id="touch-stick" class="touch-stick"><div id="touch-knob" class="touch-knob"></div></div>
+    <button class="touch-button fire" data-touch-fire="1">FIRE</button>
+    <button class="touch-button" data-touch-key="KeyF">ENTER</button>
+    <button class="touch-button touch-small" data-touch-key="KeyR">R</button>
+    <button class="touch-button touch-small touch-sprint" data-touch-key="ShiftLeft">RUN</button>
+    <button class="touch-button touch-small touch-brake" data-touch-key="Space">BRAKE</button>
+  </div>
   <div id="menu" class="overlay hidden"><div class="panel"><div class="title">NEON OUTLAW</div><p class="tag">THE CITY OWES YOU NOTHING.</p><button id="resume">RESUME</button><button id="missions">MISSIONS</button><button id="garage">GARAGE</button><button id="settings">SETTINGS</button></div></div>
   <div id="mission-screen" class="overlay hidden"><div class="panel wide"><button class="close" data-close="mission-screen">×</button><h2>MISSION SELECT</h2><div id="mission-list"></div></div></div>
   <div id="garage-screen" class="overlay hidden"><div class="panel wide"><button class="close" data-close="garage-screen">×</button><h2>GARAGE</h2><div id="garage-list"></div></div></div>
   <div id="death-screen" class="overlay hidden"><div class="panel"><h2>YOU'RE DONE.</h2><p id="death-text">The city wins this round.</p><button id="retry">RETRY</button><button id="death-menu">CITY MENU</button></div></div>
   <div id="toast"></div>
   <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"}}</script>
+  <script src="src/mobile.js?v=20260902-1"></script>
   <script type="module" src="src/boot.js?v=20260902-3"></script>
 </body>
 </html>
